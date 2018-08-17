@@ -2,10 +2,10 @@
 	<div>
 		<div class="topBox">
 			<div class="left">
-				<div class="bookItem" v-for="(item,index) in books" @mouseenter="dataDetails(index)" @mouseleave="hiddenDetail(index)">
-					<div class="name">{{item.name}}</div>
+				<div class="bookItem" v-for="(item,index) in books" @mouseenter="dataDetails(index)" @mouseleave="hiddenDetail(index)" @click="getDetail(item.id)">
+					<div class="name">{{item.title}}</div>
 					<div class="author">{{item.author}}</div>
-					<div class="synopsis" v-if="item.default == true">{{item.synopsis}}</div>
+					<div class="synopsis" v-if="item.default == true">{{item.descs}}</div>
 				</div>
 			</div>
 			<div class="right">
@@ -16,64 +16,14 @@
 						<div class="tie">最近在读</div>
 						<div class="line"></div>
 					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
+					<div class="rankItem" v-for="item in readingList" @click="location(item.url)">
+						<img class="icons" :src="baseUrl + item.pageimg">
 						<div class="miao">
 							<div>
-								<div class="name">资本的游戏</div>
-								<div class="Author">房西苑</div>
+								<div class="name">{{item.name}}</div>
+								<div class="Author">{{item.author}}</div>
 							</div>
-							<div class="kan">
-								《资本的游戏》是一本从头到尾都是在用中国式的语言对资本运营
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div>
-								<div class="name">资本的游戏</div>
-								<div class="Author">房西苑</div>
-							</div>
-							<div class="kan">
-								《资本的游戏》是一本从头到尾都是在用中国式的语言对资本运营
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div>
-								<div class="name">资本的游戏</div>
-								<div class="Author">房西苑</div>
-							</div>
-							<div class="kan">
-								《资本的游戏》是一本从头到尾都是在用中国式的语言对资本运营
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div>
-								<div class="name">资本的游戏</div>
-								<div class="Author">房西苑</div>
-							</div>
-							<div class="kan">
-								《资本的游戏》是一本从头到尾都是在用中国式的语言对资本运营
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div>
-								<div class="name">资本的游戏</div>
-								<div class="Author">房西苑</div>
-							</div>
-							<div class="kan">
-								《资本的游戏》是一本从头到尾都是在用中国式的语言对资本运营
-							</div>
+							<div class="kan">{{item.descs}}</div>
 						</div>
 					</div>
 				</div>
@@ -83,8 +33,9 @@
 			<el-pagination
 			background
 			layout="prev, pager, next"
-			:page-count="totalPages"
+			:total="total"
 			:pager-count="5"
+			:page-size="6"
 			@current-change = "currentChange">
 		</el-pagination>
 	</div>
@@ -92,6 +43,7 @@
 </template>
 <style lang="less" scoped>
 .topBox{
+	min-height:6rem;
 	margin: .8rem auto .2rem;
 	width: 70%;
 	display:flex;
@@ -233,7 +185,7 @@
 						overflow: hidden;
 						text-overflow: ellipsis;
 						display: -webkit-box;
-						-webkit-line-clamp: 2;
+						-webkit-line-clamp: 1;
 						-webkit-box-orient: vertical;
 					}
 					.name:hover{
@@ -266,28 +218,67 @@
 }
 </style>
 <script>
+	import resource from '../api/resource.js'
 	export default{
 		data(){
 			return{
-				totalPages: 10,			//总页数
+				total: 0,				//总条数
 				page: 1,				//当前页码
-				books:[{"name":"资本的游戏","author":"哈哈","synopsis":"简介：如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法开始绝代风华深刻的","default":false},
-				{"name":"从0到1","author":"哈哈","synopsis":"简介：如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法开始绝代风华深刻的","default":false},
-				{"name":"从0到1","author":"哈哈","synopsis":"简介：如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法开始绝代风华深刻的","default":false},
-				{"name":"从0到1","author":"哈哈","synopsis":"简介：如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法开始绝代风华深刻的","default":false},
-				{"name":"从0到1","author":"哈哈","synopsis":"简介：如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法开始绝代风华深刻的","default":false}
-				]
+				books:[],				//读书笔记列表
+				readingList:[],			//最近在读列表
 			}
 		},
+		created(){
+			//获取读书笔记列表
+			this.geNoteList();
+			//获取最近在读列表
+			this.getReading();
+		},
 		methods:{
+			//获取读书笔记列表
+			geNoteList(){
+				resource.noteList({page:this.page}).then(res => {
+					if(res.data.code == "0"){
+						this.books = res.data.data;
+						this.total = res.data.total;
+					}else{
+						this.$message({
+							message: res.data.msg,
+							type: 'error'
+						});
+					}
+				});
+			},
+			//获取最近在读列表
+			getReading(){
+				resource.getReadList().then(res => {
+					if(res.data.code == "0"){
+						this.readingList = res.data.data;
+					}else{
+						this.$message({
+							message: res.data.msg,
+							type: 'error'
+						});
+					}
+				});
+			},
+			//点击最近在读跳转链接
+			location(url){
+				window.open(url);
+			},
+			//获取读书笔记详情
+			getDetail(id){
+				this.$router.push('/detail?type=1&id=' + id);
+			},	
 			//点击切换页码
-			currentChange(){
+			currentChange(e){
 				this.page = e;
-				console.log(this.page);
+				//获取读书笔记列表
+				this.geNoteList();
 			},
 			//鼠标移入事件
 			dataDetails(index){
-				this.books[index].default = true;
+				this.$set(this.books[index],'default',true);
 			},
 			//鼠标移除事件
 			hiddenDetail(index){

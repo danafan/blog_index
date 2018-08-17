@@ -17,38 +17,19 @@
 			<div class="left">
 				<!-- 上面两个推荐文章 -->
 				<div class="recomm">
-					<div class="recommItem">
-						<div class="icon"><img src="../assets/0-2.jpg"></div>
+					<div class="recommItem" v-for="item in indexList" @click="getDetail(item.id)">
+						<div class="icon"><img :src="baseUrl + item.pageimg"></div>
 						<div class="sun">
-							<div class="title">关于跨域问题的解决方案关于跨域问题的解决方案关于跨域问题的解决方案</div>
+							<div class="title">{{item.title}}</div>
 							<div class="info">
-								<div class="time">时间：2018-06-12</div>
+								<div class="time">发表时间:{{item.createdTime | updateTime}}</div>
 								<div class="zhan">
 									<div class="look">
-										<div class="shu">23</div>
+										<div class="shu">{{item.browse}}</div>
 										<img src="../assets/eyes.png">
 									</div>
 									<div class="zan">
-										<div class="shu">216</div>
-										<img src="../assets/zan.png">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="recommItem">
-						<div class="icon"><img src="../assets/0-1.jpg"></div>
-						<div class="sun">
-							<div class="title">关于跨域问题的解决方案关于跨域问题的解决方案关于跨域问题的解决方案</div>
-							<div class="info">
-								<div class="time">时间：2018-06-12</div>
-								<div class="zhan">
-									<div class="look">
-										<div class="shu">23</div>
-										<img src="../assets/eyes.png">
-									</div>
-									<div class="zan">
-										<div class="shu">216</div>
+										<div class="shu">{{item.point}}</div>
 										<img src="../assets/zan.png">
 									</div>
 								</div>
@@ -80,7 +61,7 @@
 					<div class="username">范玉龙</div>
 					<div class="qian">以中庸之道处世 以逍遥之道处心</div>
 					<div class="txt">
-						<div class="jie">网名：<span>FanTasy</span></div>
+						<div class="jie">网名：<span>Randol</span></div>
 						<div class="jie">职业：<span>web前端开发工程师</span></div>
 						<div class="jie">籍贯：<span>浙江省-杭州市</span></div>
 						<div class="jie">邮箱：<span>13067882143@163.com</span></div>
@@ -285,7 +266,7 @@
 			.recommItem{
 				border-radius: .08rem;
 				width: 2.8rem;
-				height: 4rem;
+				height: 3.6rem;
 				box-shadow: -3px 6px 15px 0px rgba(170, 170, 170, 1);
 				display: flex;
 				flex-direction: column;
@@ -293,7 +274,7 @@
 					border-radius: .08rem .08rem 0 0;
 					display:block;
 					width: 2.8rem;
-					height: 3rem;
+					height: 2.6rem;
 					overflow: hidden;
 					img{
 						border-radius: .08rem .08rem 0 0;
@@ -314,6 +295,7 @@
 					flex:1;
 					padding: .08rem;
 					.title{
+						font-weight:bold;
 						font-size: 16px;
 						color: #333;
 						overflow: hidden;
@@ -327,8 +309,8 @@
 					};
 					.info{
 						width: 100%;
-						padding-left: .05rem;
-						padding-right: .05rem;
+						padding-left: .02rem;
+						padding-right: .02rem;
 						font-size: 14px;
 						color: #666;
 						display:flex;
@@ -342,7 +324,7 @@
 								align-items: center;
 								img{
 									margin-left: .04rem;
-									width: .2rem;
+									width: .18rem;
 									height: .18rem;
 								}
 							}
@@ -354,7 +336,7 @@
 									position: relative;
 									top: -.03rem;
 									margin-left: .04rem;
-									width: .2rem;
+									width: .18rem;
 									height: .18rem;
 								}
 							}
@@ -398,7 +380,7 @@
 				}
 			}
 			.sayItem3{
-				padding-left: 1.6rem;
+				padding-left: 1.8rem;
 				display:flex;
 				align-items: center;
 				color: #666;
@@ -428,8 +410,8 @@
 				left: 50%;
 				transform: translate(-50%);
 				border-radius: 50%;
-				width: 1.6rem;
-				height: 1.6rem;
+				width: 1.5rem;
+				height: 1.5rem;
 				overflow: hidden;
 				transition: all 0.2s;
 				img{
@@ -450,7 +432,7 @@
 				top: 1.9rem;
 				left: 50%;
 				transform: translate(-50%);
-				font-size: 20px;
+				font-size: 24px;
 				font-weight: bold;
 				color: #333;
 			}
@@ -458,7 +440,7 @@
 				width: 100%;
 				text-align: center;
 				position: absolute;
-				top: 2.2rem;
+				top: 2.3rem;
 				left: 0;
 				font-size: 16px;
 				color: #666;
@@ -505,6 +487,7 @@
 }
 </style>
 <script>
+	import resource from '../api/resource.js'
 	export default{
 		data(){
 			return{
@@ -514,6 +497,7 @@
 				week: "",		//周几
 				time: "",		//时间
 				backimg:"",		//背景图
+				indexList:[],	//推荐文章列表
 			}
 		},
 		created(){
@@ -534,7 +518,6 @@
 			let count = myDates.getDay(); 			
 			// 动态背景图
 			this.backimg = require('../assets/' + count + ".jpg");
-			// this.backimg = require('../assets/1.jpg');
 			switch (count){
 				case 0:
 				this.week = "Sunday";
@@ -557,9 +540,28 @@
 				case 6:
 				this.week = "Saturday";
 				break;
-			}
+			};
+			//获取两个推荐文章
+			this.getIndex();
 		},
 		methods:{
+			//获取两个推荐文章
+			getIndex(){
+				resource.getIndexList().then(res => {
+					if(res.data.code == "0"){
+						this.indexList = res.data.data;
+					}else{
+						this.$message({
+							message: res.data.msg,
+							type: 'error'
+						});
+					}
+				});
+			},
+			//获取技术分享详情
+			getDetail(id){
+				this.$router.push('/detail?type=0&id=' + id);
+			},	
 			//动态时钟
 			getDate(){
 				var myDate = new Date();//获取系统当前时间
@@ -569,6 +571,16 @@
 				this.time = hours + ": " + minute + ": " + second;
 			}
 			
+		},
+		filters:{
+			updateTime(time){
+				let times = parseInt(time);
+				var time = new Date(times);
+				var y = time.getFullYear();
+				var m = (time.getMonth()+1 < 10 ? '0'+(time.getMonth()+1) : time.getMonth()+1);
+				var d = (time.getDate() < 10 ? '0'+(time.getDate()) : time.getDate());
+				return y+'-'+m+'-'+d;
+			}
 		}
 	}
 </script>

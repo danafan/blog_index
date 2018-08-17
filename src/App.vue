@@ -5,8 +5,12 @@
 </template>
 
 <script>
+	import resource from './api/resource.js'
 export default {
-  name: 'App'
+  name: 'App',
+  created(){
+  		resource.addBrowse().then(res => {})
+  }
 }
 </script>
 
@@ -17,6 +21,6 @@ export default {
 }
 div{
   box-sizing: border-box;
-  cursor: pointer;
+  cursor: default;
 }
 </style>

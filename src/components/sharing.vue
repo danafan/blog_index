@@ -2,110 +2,22 @@
 	<div>
 		<div class="topBox">
 			<div class="left">
-				<div class="item" @click="$router.push('/detail')">
-					<div class="icon"><img src="../assets/0-1.jpg"></div>
+				<div class="item" v-for="item in shereList" @click="getDetail(item.id)">
+					<div class="icon"><img :src="baseUrl + item.pageimg"></div>
 					<div class="txtBox">
 						<div>
-							<div class="title">javascript面向对象编程</div>
-							<div class="subname">如果你无法简洁的表达你的想法，那只说明你还不够了解它。-- 阿尔伯特·爱因斯坦</div>
+							<div class="title">{{item.title}}</div>
+							<div class="subname">{{item.descs}}</div>
 						</div>
 						<div class="jia">
-							<div class="time">发布时间：2018-03-23</div>
+							<div class="time">发布时间：{{item.createdTime | updateTime}}</div>
 							<div class="shou">
 								<div class="yan">
-									<div class="shu">12</div>
+									<div class="shu">{{item.browse}}</div>
 									<img src="../assets/eyes.png">
 								</div>
 								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="icon"><img src="../assets/0-1.jpg"></div>
-					<div class="txtBox">
-						<div>
-							<div class="title">javascript面向对象编程</div>
-							<div class="subname">如果你无法简洁的表达你的想法，那只说明你还不够了解它。-- 阿尔伯特·爱因斯坦</div>
-						</div>
-						<div class="jia">
-							<div class="time">发布时间：2018-03-23</div>
-							<div class="shou">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="icon"><img src="../assets/0-1.jpg"></div>
-					<div class="txtBox">
-						<div>
-							<div class="title">javascript面向对象编程</div>
-							<div class="subname">如果你无法简洁的表达你的想法，那只说明你还不够了解它。-- 阿尔伯特·爱因斯坦</div>
-						</div>
-						<div class="jia">
-							<div class="time">发布时间：2018-03-23</div>
-							<div class="shou">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="icon"><img src="../assets/0-1.jpg"></div>
-					<div class="txtBox">
-						<div>
-							<div class="title">javascript面向对象编程</div>
-							<div class="subname">如果你无法简洁的表达你的想法，那只说明你还不够了解它。-- 阿尔伯特·爱因斯坦</div>
-						</div>
-						<div class="jia">
-							<div class="time">发布时间：2018-03-23</div>
-							<div class="shou">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="icon"><img src="../assets/0-1.jpg"></div>
-					<div class="txtBox">
-						<div>
-							<div class="title">javascript面向对象编程</div>
-							<div class="subname">如果你无法简洁的表达你的想法，那只说明你还不够了解它。-- 阿尔伯特·爱因斯坦</div>
-						</div>
-						<div class="jia">
-							<div class="time">发布时间：2018-03-23</div>
-							<div class="shou">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
+									<div class="shu">{{item.point}}</div>
 									<img src="../assets/zan.png">
 								</div>
 							</div>
@@ -114,10 +26,6 @@
 				</div>
 			</div>
 			<div class="right">
-				<div class="searchBox">
-					<input type="text" placeholder="请输入关键字">
-					<div class="search">搜索</div>
-				</div>
 				<!-- 点击排行 -->
 				<div class="rank">
 					<div class="title">
@@ -125,49 +33,17 @@
 						<div class="tie">点击排行</div>
 						<div class="line"></div>
 					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
+					<div class="rankItem" v-for="item in sortList" @click="getDetail(item.id)">
+						<img class="icons" :src="baseUrl + item.pageimg">
 						<div class="miao">
-							<div class="name">如果你无法简洁的表达</div>
+							<div class="name">{{item.title}}</div>
 							<div class="kan">
 								<div class="yan">
-									<div class="shu">12</div>
+									<div class="shu">{{item.browse}}</div>
 									<img src="../assets/eyes.png">
 								</div>
 								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div class="name">如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法</div>
-							<div class="kan">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div class="name">如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法</div>
-							<div class="kan">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
+									<div class="shu">{{item.point}}</div>
 									<img src="../assets/zan.png">
 								</div>
 							</div>
@@ -181,49 +57,17 @@
 						<div class="tie">本栏推荐</div>
 						<div class="line"></div>
 					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
+					<div class="rankItem" v-for="item in recomList" @click="getDetail(item.id)">
+						<img class="icons" :src="baseUrl + item.pageimg">
 						<div class="miao">
-							<div class="name">如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法</div>
+							<div class="name">{{item.title}}</div>
 							<div class="kan">
 								<div class="yan">
-									<div class="shu">12</div>
+									<div class="shu">{{item.browse}}</div>
 									<img src="../assets/eyes.png">
 								</div>
 								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div class="name">如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法</div>
-							<div class="kan">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
-									<img src="../assets/zan.png">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="rankItem">
-						<img class="icons" src="../assets/0-2.jpg">
-						<div class="miao">
-							<div class="name">如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法如果你无法简洁的表达你的想法</div>
-							<div class="kan">
-								<div class="yan">
-									<div class="shu">12</div>
-									<img src="../assets/eyes.png">
-								</div>
-								<div class="zan">
-									<div class="shu">12</div>
+									<div class="shu">{{item.point}}</div>
 									<img src="../assets/zan.png">
 								</div>
 							</div>
@@ -236,8 +80,9 @@
 			<el-pagination
 			background
 			layout="prev, pager, next"
-			:page-count="totalPages"
+			:total="total"
 			:pager-count="5"
+			:page-size="5"
 			@current-change = "currentChange">
 		</el-pagination>
 	</div>
@@ -245,6 +90,7 @@
 </template>
 <style lang="less" scoped>
 .topBox{
+	min-height:6rem;
 	margin: .8rem auto .2rem;
 	width: 70%;
 	display:flex;
@@ -253,7 +99,7 @@
 		width: 65%;
 		display:flex;
 		flex-direction:column;
-		justify-content: center;
+		align-items: center;
 		.item{
 			margin-bottom: .1rem;
 			border: 1px solid #f4f4f4;
@@ -262,8 +108,8 @@
 			display:flex;
 			.icon{
 				border-radius: .08rem 0 0 .08rem;
-				width: 3.2rem;
-				height: 1.8rem;
+				width: 2.2rem;
+				height: 1.4rem;
 				overflow: hidden;
 				img{
 					border-radius: .08rem 0 0 .08rem;
@@ -274,38 +120,40 @@
 				}
 			}
 			.txtBox{
+				flex: 1;
 				display:flex;
 				flex-direction: column;
 				justify-content:space-between;
 				padding: .12rem;
 				.title{
+					width: 80%;
 					margin-bottom: .1rem;
-					font-size: 20px;
+					font-size: 16px;
 					color: #333;
 					font-weight: bold;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					display: -webkit-box;
-					-webkit-line-clamp: 2;
+					-webkit-line-clamp: 1;
 					-webkit-box-orient: vertical;
 				}
 				.title:hover{
 					color: #38A1F3;
 				}
 				.subname{
-					font-size: 16px;
+					font-size: 14px;
 					color: #333;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					display: -webkit-box;
-					-webkit-line-clamp: 3;
+					-webkit-line-clamp: 2;
 					-webkit-box-orient: vertical;
 					
 				}
 				.jia{
 					display:flex;
 					justify-content:space-between;
-					font-size: 14px;
+					font-size: 13px;
 					color: #666;
 					.shou{
 						display:flex;
@@ -339,8 +187,8 @@
 			box-shadow: -3px 3px 15px 0px rgba(170, 170, 170, 1);
 			.icon{
 				border-radius: .08rem 0 0 .08rem;
-				width: 3.2rem;
-				height: 1.8rem;
+				width: 2.2rem;
+				height: 1.4rem;
 				overflow: hidden;
 				img{
 					cursor: pointer;
@@ -352,37 +200,13 @@
 	}
 	// 右侧
 	.right{
-		width: 35%;
+		width: 30%;
 		display:flex;
 		flex-direction: column;
 		align-items: center;
-		// 搜索框
-		.searchBox{
-			display:flex;
-			width: 86%;
-			input{
-				outline: none;
-				border-right: none;
-				border-radius: .06rem 0 0 .06rem;
-				width: 75%;
-				height: .36rem;
-				font-size: 15px;
-				padding-left: .05rem;
-			}
-			.search{
-				border-radius: 0 .06rem .06rem 0;
-				flex:1;
-				text-align: center;
-				height: .39rem;
-				line-height: .39rem;
-				background: #38A1F3;
-				font-size: .14rem;
-				color: #fff;
-			}
-		}
 		// 模块
 		.rank{
-			margin-top: .2rem;
+			margin-bottom: .2rem;
 			border: 1px solid #f4f4f4;
 			border-radius: .08rem;
 			width: 86%;
@@ -476,18 +300,100 @@
 }
 </style>
 <script>
+	import resource from '../api/resource.js'
 	export default{
 		data(){
 			return{
-				totalPages: 10,			//总页数
+				total: 0,				//总条数
 				page: 1,				//当前页码
+				shereList:[],			//技术分享列表
+				sortList:[],			//技术分享点击量排序
+				recomList:[],			//技术分享本栏推荐
 			}
 		},
+		created(){
+			//获取技术分享列表
+			this.getShareList();
+			//技术分享点击排行  
+			this.getSortList();
+			//技术分享本栏推荐
+			this.getRecomShare();
+		},
 		methods:{
-			currentChange(){
+			//获取技术分享列表
+			getShareList(){
+				resource.shareList({page:this.page}).then(res => {
+					if(res.data.code == "0"){
+						this.shereList = res.data.data;
+						this.total = res.data.total;
+					}else{
+						this.$message({
+							message: res.data.msg,
+							type: 'error'
+						});
+					}
+				});
+			},
+			//技术分享点击排行  
+			getSortList(){
+				resource.shareSortList().then(res => {
+					if(res.data.code == "0"){
+						this.sortList = res.data.data;
+					}else{
+						this.$message({
+							message: res.data.msg,
+							type: 'error'
+						});
+					}
+				});
+			},
+			//技术分享本栏推荐
+			getRecomShare(){
+				resource.shareRecom().then(res => {
+					if(res.data.code == "0"){
+						this.recomList = res.data.data;
+					}else{
+						this.$message({
+							message: res.data.msg,
+							type: 'error'
+						});
+					}
+				});
+			},
+			//获取技术分享详情
+			getDetail(id){
+				this.$router.push('/detail?type=0&id=' + id);
+			},
+			//点击切换页码
+			currentChange(e){
 				this.page = e;
-				console.log(this.page);
+				//获取技术分享列表
+				this.getShareList();
+			}
+		},
+		filters:{
+			updateTime(time){
+				let times = parseInt(time);
+				var time = new Date(times);
+				var y = time.getFullYear();
+				var m = time.getMonth()+1;
+				var d = time.getDate();
+				var h = time.getHours();
+				var mm = time.getMinutes();
+				var s = time.getSeconds();
+				return y+'-'+m+'-'+d;
 			}
 		}
 	}
 </script>
+
+
+
+
+
+
+
+
+
+
+
