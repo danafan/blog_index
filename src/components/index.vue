@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<!-- 大背景图 -->
-		<img class="backImg" :src="backimg">
+		<div class="backImg">
+			<img :src="baseUrl + backimg" v-if="backimg != ''">
+		</div>
 		<div class="years">
 			<div class="item" v-for="item in years">{{item}}</div>
 		</div>
@@ -21,6 +23,7 @@
 						<div class="icon"><img :src="baseUrl + item.pageimg"></div>
 						<div class="sun">
 							<div class="title">{{item.title}}</div>
+							<div class="subname">{{item.descs}}</div>
 							<div class="info">
 								<div class="time">发表时间:{{item.createdTime | updateTime}}</div>
 								<div class="zhan">
@@ -57,11 +60,11 @@
 			<!-- 右侧 -->
 			<div class="right">
 				<div class="userinfo">
-					<div class="userImg"><img src="../assets/0-0.jpg"></div>
+					<div class="userImg"><img src="../assets/page.jpg"></div>
 					<div class="username">范玉龙</div>
 					<div class="qian">以中庸之道处世 以逍遥之道处心</div>
 					<div class="txt">
-						<div class="jie">网名：<span>Randol</span></div>
+						<div class="jie">网名：<span>Ranbol</span></div>
 						<div class="jie">职业：<span>web前端开发工程师</span></div>
 						<div class="jie">籍贯：<span>浙江省-杭州市</span></div>
 						<div class="jie">邮箱：<span>13067882143@163.com</span></div>
@@ -78,9 +81,13 @@
 </template>
 <style lang="less" scoped>
 .backImg{
-	display:block;
 	width: 100%;
-	height: 100%;
+	height: 10rem;
+	img{
+		display:block;
+		width: 100%;
+		height: 100%;
+	}
 }
 .years{
 	position: absolute;
@@ -242,15 +249,15 @@
 	font-weight: bold;
 }
 .times{
-	box-shadow: 0px 0px 29px 8px rgba(20, 30, 48, 0.6);
+	box-shadow: 0px 0px 18px 5px rgba(20, 30, 48, 0.6);
 	border-radius: .2rem;
 	position: absolute;
 	top: 1.2rem;
 	right: 1rem;
-	width: 3.4rem;
+	width: 3.2rem;
 	text-align:center;
-	height: 1rem;
-	line-height: 1rem;
+	height: .8rem;
+	line-height: .8rem;
 	font-size: 52px; 
 	color: #fff;
 }
@@ -259,21 +266,20 @@
 	margin: .2rem auto;
 	width: 70%;
 	.left{
-		width: 60%;
+		width: 65%;
 		.recomm{
 			display:flex;
 			justify-content:space-between;
 			.recommItem{
 				border-radius: .08rem;
-				width: 2.8rem;
-				height: 3.6rem;
+				width: 3rem;
 				box-shadow: -3px 6px 15px 0px rgba(170, 170, 170, 1);
 				display: flex;
 				flex-direction: column;
 				.icon{
 					border-radius: .08rem .08rem 0 0;
 					display:block;
-					width: 2.8rem;
+					width: 3rem;
 					height: 2.6rem;
 					overflow: hidden;
 					img{
@@ -282,9 +288,6 @@
 						height: 100%;
 						cursor: pointer;
 						transition: all 0.6s;
-					}
-					img:hover{
-						transform: scale(1.1);
 					}
 				}
 				.sun{
@@ -296,7 +299,7 @@
 					padding: .08rem;
 					.title{
 						font-weight:bold;
-						font-size: 16px;
+						font-size: 18px;
 						color: #333;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -304,9 +307,17 @@
 						-webkit-line-clamp: 2;
 						-webkit-box-orient: vertical;
 					}
-					.title:hover{
-						color: #38A1F3;
-					};
+					.subname{
+						margin-top: .06rem;
+						margin-bottom: .12rem;
+						font-size: 14px;
+						color: #333;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						display: -webkit-box;
+						-webkit-line-clamp: 2;
+						-webkit-box-orient: vertical;
+					}
 					.info{
 						width: 100%;
 						padding-left: .02rem;
@@ -324,8 +335,8 @@
 								align-items: center;
 								img{
 									margin-left: .04rem;
-									width: .18rem;
-									height: .18rem;
+									width: .16rem;
+									height: .15rem;
 								}
 							}
 							.zan{
@@ -334,16 +345,23 @@
 								align-items: center;
 								img{
 									position: relative;
-									top: -.03rem;
+									top: -.02rem;
 									margin-left: .04rem;
-									width: .18rem;
-									height: .18rem;
+									width: .16rem;
+									height: .15rem;
 								}
 							}
 						}
-
 					}
 				}	
+			}
+			.recommItem:hover{
+				.icon img{
+					transform: scale(1.1);
+				}
+				.sun .title{
+					color: #38A1F3;
+				}
 			}
 		}
 		.saying{
@@ -395,7 +413,7 @@
 		}
 	}
 	.right{
-		width: 40%;
+		width: 35%;
 		display:flex;
 		justify-content:flex-end;
 		.userinfo{
@@ -424,15 +442,12 @@
 					transform: scale(1.1);	
 				}
 			}
-			.userImg:hover{
-				box-shadow: -3px 3px 8px 0px rgba(170, 170, 170, 1);
-			}
 			.username{
 				position: absolute;
 				top: 1.9rem;
 				left: 50%;
 				transform: translate(-50%);
-				font-size: 24px;
+				font-size: 22px;
 				font-weight: bold;
 				color: #333;
 			}
@@ -470,16 +485,16 @@
 				.wechat{
 					position: relative;
 					top: .06rem;
-					width: .44rem;
-					height: .34rem;
+					width: .38rem;
+					height: .3rem;
 				}
 				.qq{
-					width: .42rem;
-					height: .42rem;
+					width: .36rem;
+					height: .36rem;
 				}
 				.wei{
-					width: .42rem;
-					height: .42rem;
+					width: .38rem;
+					height: .38rem;
 				}
 			}
 		}
@@ -516,8 +531,6 @@
 			//星期(0-6,0代表星期天)
 			this.day = (myDates.getDate() < 10 ? '0'+(myDates.getDate()) : myDates.getDate());
 			let count = myDates.getDay(); 			
-			// 动态背景图
-			this.backimg = require('../assets/' + count + ".jpg");
 			switch (count){
 				case 0:
 				this.week = "Sunday";
@@ -543,6 +556,8 @@
 			};
 			//获取两个推荐文章
 			this.getIndex();
+			// 动态背景图
+			this.getBack(count);
 		},
 		methods:{
 			//获取两个推荐文章
@@ -555,6 +570,17 @@
 							message: res.data.msg,
 							type: 'error'
 						});
+					}
+				});
+			},
+			// 动态背景图
+			getBack(count){
+				if(count == 0){
+					count = 7;
+				}
+				resource.imgList({id:count}).then(res => {
+					if(res.data.code == "0"){
+						this.backimg = res.data.data[0].imgurl;
 					}
 				});
 			},

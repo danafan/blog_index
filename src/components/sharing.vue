@@ -137,11 +137,8 @@
 					-webkit-line-clamp: 1;
 					-webkit-box-orient: vertical;
 				}
-				.title:hover{
-					color: #38A1F3;
-				}
 				.subname{
-					font-size: 14px;
+					font-size: 13px;
 					color: #333;
 					overflow: hidden;
 					text-overflow: ellipsis;
@@ -164,8 +161,8 @@
 							align-items: center;
 							img{
 								margin-left: .04rem;
-								width: .2rem;
-								height: .18rem;
+								width: .16rem;
+								height: .15rem;
 							}
 						}
 						.zan{
@@ -175,8 +172,8 @@
 								position: relative;
 								top: -.02rem;
 								margin-left: .04rem;
-								width: .2rem;
-								height: .18rem;
+								width: .16rem;
+								height: .15rem;
 							}
 						}
 					}
@@ -185,16 +182,8 @@
 		}
 		.item:hover{
 			box-shadow: -3px 3px 15px 0px rgba(170, 170, 170, 1);
-			.icon{
-				border-radius: .08rem 0 0 .08rem;
-				width: 2.2rem;
-				height: 1.4rem;
-				overflow: hidden;
-				img{
-					cursor: pointer;
-					transition: all 0.4s;
-					transform: scale(1.1);	
-				}
+			.txtBox .title,.txtBox .subname{
+				color: #38A1F3;
 			}
 		}
 	}
@@ -209,7 +198,7 @@
 			margin-bottom: .2rem;
 			border: 1px solid #f4f4f4;
 			border-radius: .08rem;
-			width: 86%;
+			width: 90%;
 			display:flex;
 			flex-direction: column;
 			align-items: center;
@@ -258,34 +247,37 @@
 						-webkit-line-clamp: 2;
 						-webkit-box-orient: vertical;
 					}
-					.name:hover{
-						color: #38A1F3;
-					};
 					.kan{
 						font-size: 12px;
 						display:flex;
 						justify-content:flex-end;
 						.yan,.zan{
 							display:flex;
+							align-items: center;
 						}
 						.yan{
 							img{
-								margin-left: .06rem;
+								margin-left: .04rem;
 								width: .16rem;
-								height: .16rem;
+								height: .15rem;
 							}
 						}
 						.zan{
 							margin-left: .1rem;
 							img{
-								margin-left: .06rem;
+								margin-left: .02rem;
 								position: relative;
 								top: -.02rem;
 								width: .16rem;
-								height: .16rem;
+								height: .15rem;
 							}
 						}
 					}
+				}
+			}
+			.rankItem:hover{
+				.miao .name {
+					color: #38A1F3;
 				}
 			}
 		}

@@ -24,12 +24,12 @@
 			<div class="message">
 				<div class="left">
 					<div class="title">博客简介</div>
-					<div class="jian">本博客由博主独立设计和开发，内容主要包括web前端开发技术的分享，整理的读书笔记以及日常的心得体会，期待与更多人交流学习，欢迎留言和评论哦！！！</div>
+					<div class="jian">本博客由博主独立设计和开发，内容主要包括web前端开发技术的分享，整理的读书笔记以及日常的心得体会，期待与更多人交流学习，欢迎留言和评论哦 ^_^</div>
 					<div class="stat">技术分享 <span>{{infoObj.shareCount}}</span></div>
 					<div class="stat">读书笔记 <span>{{infoObj.noteCount}}</span></div>
 					<div class="stat">我的日志 <span>{{infoObj.logCount}}</span></div>
-					<div class="stat">总浏览量 <span>{{infoObj.browseCount}}</span></div>
 					<div class="stat">评论总数 <span>{{infoObj.comCount}}</span></div>
+					<div class="stat">总浏览量 <span>{{infoObj.browseCount}}</span></div>
 				</div>
 				<div class="right">
 					<div class="inputItem">
@@ -373,7 +373,7 @@
 			width: 50%;
 			.title{
 				margin-bottom: .1rem;
-				font-size: 26px;
+				font-size: 24px;
 				color: #fff;
 			}
 			.jian{
@@ -408,8 +408,8 @@
 				img{
 					margin-left: .04rem;
 					margin-right: .06rem;
-					width: .24rem;
-					height: .24rem;
+					width: .22rem;
+					height: .22rem;
 				}
 				input{
 					outline: none;

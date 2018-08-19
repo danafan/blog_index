@@ -106,31 +106,28 @@
 			padding-bottom: .2rem;
 			// 某一条
 			.logItem{
-				margin-bottom: .2rem;
 				border-bottom: 1px solid #f4f4f4;
-				height: 1.6rem;
+				height: 1.4rem;
 				width: 96%;
 				display:flex;
+				align-items: center;
 				.icon{
 					margin-right: .1rem;
 					border-radius: .1rem;
-					width: 2.2rem;
-					height: 1.4rem;
+					width: 2rem;
+					height: 1.2rem;
 					overflow: hidden;
 					img{
-						border-radius: .1rem;
+						border-radius: .05rem;
 						width: 100%;
 						height: 100%;
 						cursor: pointer;
 						transition: all 0.6s;
 					}
-					img:hover{
-						transform: scale(1.1);
-					}
 				}
 				.content{
-					height: 1.4rem;
-					padding-top: .12rem; 
+					height: 1.2rem;
+					padding-top: .1rem; 
 					padding-bottom: .1rem; 
 					display:flex;
 					flex-direction: column;
@@ -147,22 +144,16 @@
 						-webkit-line-clamp: 1;
 						-webkit-box-orient: vertical;
 					}
-					.title:hover{
-						color: #38A1F3;
-					};
 					.desc{
 						margin-top: .1rem;
 						width: 100%;
-						font-size: 14px;
+						font-size: 13px;
 						color: #666;
 						overflow: hidden;
 						text-overflow: ellipsis;
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
 						-webkit-box-orient: vertical;
-					}
-					.desc:hover{
-						color: #38A1F3;
 					}
 					.info{
 						width: 100%;
@@ -179,8 +170,8 @@
 								align-items: center;
 								img{
 									margin-left: .04rem;
-									width: .2rem;
-									height: .18rem;
+									width: .16rem;
+									height: .15rem;
 								}
 							}
 							.zan{
@@ -189,14 +180,22 @@
 								align-items: center;
 								img{
 									position: relative;
-									top: -.03rem;
+									top: -.02rem;
 									margin-left: .04rem;
-									width: .2rem;
-									height: .18rem;
+									width: .16rem;
+									height: .15rem;
 								}
 							}
 						}
 					}
+				}
+			}
+			.logItem:hover{
+				.icon img{
+					transform: scale(1.1);
+				}
+				.content .title,.content .desc{
+					color: #38A1F3;
 				}
 			}
 		}

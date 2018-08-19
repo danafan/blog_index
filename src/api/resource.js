@@ -16,6 +16,7 @@ let path = {
 	addMessage:"addMessage",			//留言
 	allCom: "allCom",					//获取所有评论
 	reply:"reply",						//发表评论
+	imgList:"imgList",					//获取首页图片列表
 }
 export default{
 	//浏览量加1
@@ -81,5 +82,9 @@ export default{
 	//发表评论
 	reply(params){
 		return http.post(path.reply, params)
+	},
+	//获取首页图片列表
+	imgList(params){
+		return http.get(path.imgList, params)
 	},
 }

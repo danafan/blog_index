@@ -27,6 +27,10 @@ var sqlMap = {
     //留言
     message:{
         addMessage:'insert into message(`nickname`,`email`,`content`,`createdTime`) values ?'
+    },
+    //图片
+    img:{
+        imglist:"select * from imgs where id = ?"
     }
 }
 

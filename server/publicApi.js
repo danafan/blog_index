@@ -76,11 +76,11 @@ app.post('/reply',(req, res) => {
     //根据sql语句对数据库进行插入
     conn.query(sql,[values],function(err,result) {   
         if (result) {
-            var response = JSON.stringify({code:0,msg:"评论发表成功"});
+            var response = JSON.stringify({code:0,msg:"评论成功"});
             res.send(response);
         }
         if (err) {       
-            var response = JSON.stringify({code:1,msg:"回复失败"});
+            var response = JSON.stringify({code:1,msg:"评论失败"});
             res.send(response);
         }  
     })
@@ -376,7 +376,21 @@ app.post('/addMessage',(req, res) => {
     })
 });
 
-
+//首页背景图  
+app.get('/imgList', (req, res) => { 
+    let id = req.query.id;
+    var sql = $sql.img.imglist;
+    //根据sql语句对数据库进行查询
+    conn.query(sql,[id],function(err, result) { 
+        if (result) {
+            jsonWrite(res, result);
+        }
+        if (err) {       
+            var response = JSON.stringify({code:1,msg:"最近在读列表获取失败"});
+            res.send(response);
+        }    
+    });
+});
 
 // 请求成功后对返回数据的处理
 var jsonWrite = function(res, result) {

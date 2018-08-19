@@ -87,44 +87,10 @@
 				font-size: 13px;
 				color: #fff;
 				padding:.06rem;
-				animation:.2s linear 0s myrotate ;
-				-webkit-animation:.2s linear 0s myrotate;/* Safari and Chrome */
-				-moz-animation:.2s linear 0s myrotate;
-				-o-animation:.2s linear 0s myrotate;
 			}
-			@keyframes myrotate{
-				0% {
-					height: 0;
-				}    
-				100% {
-					height: 1rem;
-				}
-			}
-			@-webkit-keyframes myrotate{/* Safari and Chrome */
-				0% {
-					height: 0;
-				}    
-				100% {
-					height: 1rem;
-				}
-			}
-			@-moz-keyframes myrotate {	/* Firefox */
-				0% {
-					height: 0;
-				}    
-				100% {
-					height: 1rem;
-				}
-			}
-
-			@-o-keyframes myrotate{ /* Opera */
-				0% {
-					height: 0;
-				}    
-				100% {
-					height: 1rem;
-				}
-			}
+		}
+		.bookItem:hover{
+			transform: scale(1.05);
 		}
 	}
 	// 右侧
@@ -137,7 +103,7 @@
 		.rank{
 			border: 1px solid #f4f4f4;
 			border-radius: .08rem;
-			width: 86%;
+			width: 90%;
 			display:flex;
 			flex-direction: column;
 			align-items: center;
@@ -188,9 +154,6 @@
 						-webkit-line-clamp: 1;
 						-webkit-box-orient: vertical;
 					}
-					.name:hover{
-						color: #38A1F3;
-					};
 					.Author{
 						margin-top: .06rem;
 						font-size: 12px;
@@ -204,6 +167,11 @@
 						-webkit-line-clamp: 2;
 						-webkit-box-orient: vertical;
 					}
+				}
+			}
+			.rankItem:hover{
+				.miao .name{
+					color: #38A1F3;
 				}
 			}
 		}

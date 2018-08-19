@@ -135,8 +135,8 @@
 						align-items: center;
 						img{
 							margin-left: .04rem;
-							width: .2rem;
-							height: .18rem;
+							width: .16rem;
+							height: .15rem;
 						}
 					}
 					.zan{
@@ -146,8 +146,8 @@
 							position: relative;
 							top: -.02rem;
 							margin-left: .04rem;
-							width: .2rem;
-							height: .18rem;
+							width: .16rem;
+							height: .15rem;
 						}
 					}
 				}
@@ -180,8 +180,8 @@
 	.zanBox{
 		margin: .1rem auto .3rem;
 		border-radius: 5rem;
-		width: 2rem;
-		height: .6rem;
+		width: 1.8rem;
+		height: .48rem;
 		border: 1px solid red;
 		display:flex;
 		align-items: center;
@@ -193,15 +193,15 @@
 			align-items: center;
 			.txt{
 				margin-right: .05rem;
-				font-size: 18px;
+				font-size: 16px;
 				color: red;
 				font-weight: bold;
 			}
 			img{
 				position: relative;
-				top: -.05rem;
-				width: .26rem;
-				height: .26rem;
+				top: -.04rem;
+				width: .22rem;
+				height: .22rem;
 			}
 		}
 		.line{
@@ -209,7 +209,7 @@
 			height: .3rem;
 		}
 		.shus{
-			font-size: 18px;
+			font-size: 16px;
 			color: red;
 			font-weight: bold;
 		}
@@ -221,7 +221,7 @@
 				color: #fff;
 			}
 			img{
-				transform: scale(1.3);
+				transform: scale(1.2);
 			}
 		}
 		.line{
@@ -655,7 +655,11 @@
 			},	
 			//点击某一条展开评论列表
 			isdefault(item){
-				this.$set(item,'defaults',!item.defaults);
+				//如果存在子集评论就展开
+				if(!!item.children){
+					this.$set(item,'defaults',!item.defaults);
+				}
+				
 			},
 			//回复子集用户的评论
 			callback(val){
