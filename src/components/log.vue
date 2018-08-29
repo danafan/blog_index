@@ -37,13 +37,13 @@
 				<!-- 照片墙 -->
 				<div class="photoBox" v-else-if="seltab == 1">
 					<div class="imgBox">
-						<img src="../assets/0-0.jpg">
+						<img src="../assets/bottomback.jpg">
 					</div>
 					<div class="imgBox">
-						<img src="../assets/0-1.jpg">
+						<img src="../assets/bottomback.jpg">
 					</div>
 					<div class="imgBox">
-						<img src="../assets/0-0.jpg">
+						<img src="../assets/bottomback.jpg">
 					</div>
 				</div>
 			</div>

@@ -84,7 +84,7 @@
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				font-size: 13px;
+				font-size: 12px;
 				color: #fff;
 				padding:.06rem;
 			}

@@ -65,7 +65,7 @@
 					<div class="qian">以中庸之道处世 以逍遥之道处心</div>
 					<div class="txt">
 						<div class="jie">网名：<span>Ranbol</span></div>
-						<div class="jie">职业：<span>web前端开发工程师</span></div>
+						<div class="jie">职业：<span>web前端开发攻城狮</span></div>
 						<div class="jie">籍贯：<span>浙江省-杭州市</span></div>
 						<div class="jie">邮箱：<span>13067882143@163.com</span></div>
 					</div>

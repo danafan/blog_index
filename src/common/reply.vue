@@ -2,7 +2,7 @@
 	<div>
 		<div class="childItem">
 			<div class="childuser">
-				<img src="../assets/0-1.jpg">
+				<img src="../assets/net.png">
 				<div class="childbiao">
 					<div class="childusername">
 						<div class="ns">{{obj.username}}</div>
@@ -38,8 +38,8 @@
 		img{
 			margin-right: .1rem;
 			border-radius: 50%;
-			width: .44rem;
-			height: .44rem;
+			width: .34rem;
+			height: .34rem;
 		}
 		.childbiao{
 			height: .34rem;

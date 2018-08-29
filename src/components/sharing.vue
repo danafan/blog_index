@@ -189,7 +189,7 @@
 	}
 	// 右侧
 	.right{
-		width: 30%;
+		width: 35%;
 		display:flex;
 		flex-direction: column;
 		align-items: center;

@@ -22,31 +22,35 @@
 		<!-- 底部留言框 -->
 		<div class="bottomBox">
 			<div class="message">
-				<div class="left">
-					<div class="title">博客简介</div>
-					<div class="jian">本博客由博主独立设计和开发，内容主要包括web前端开发技术的分享，整理的读书笔记以及日常的心得体会，期待与更多人交流学习，欢迎留言和评论哦 ^_^</div>
-					<div class="stat">技术分享 <span>{{infoObj.shareCount}}</span></div>
-					<div class="stat">读书笔记 <span>{{infoObj.noteCount}}</span></div>
-					<div class="stat">我的日志 <span>{{infoObj.logCount}}</span></div>
-					<div class="stat">评论总数 <span>{{infoObj.comCount}}</span></div>
-					<div class="stat">总浏览量 <span>{{infoObj.browseCount}}</span></div>
+				<img class="background" src="../assets/bottomback.jpg">
+				<div class="models"></div>
+				<div class="content">
+					<div class="left">
+						<div class="title">博客简介</div>
+						<div class="jian">本博客由博主独立设计和开发，内容主要包括web前端开发技术的分享，整理的读书笔记以及日常的心得体会，期待与更多人交流学习，欢迎留言和评论哦 ^_^</div>
+						<div class="stat">技术分享 <span>{{infoObj.shareCount}}</span></div>
+						<div class="stat">读书笔记 <span>{{infoObj.noteCount}}</span></div>
+						<div class="stat">我的日志 <span>{{infoObj.logCount}}</span></div>
+						<div class="stat">评论总数 <span>{{infoObj.comCount}}</span></div>
+						<div class="stat">总浏览量 <span>{{infoObj.browseCount}}</span></div>
+					</div>
+					<div class="right">
+						<div class="inputItem">
+							<img src="../assets/username.png">
+							<input type="text" placeholder="昵称" v-model="username">
+						</div>
+						<div class="inputItem">
+							<img src="../assets/emali.png">
+							<input type="text" placeholder="邮箱" v-model="email">
+						</div>
+						<textarea class="mess" placeholder="写下您的留言（200字以内）..." v-model="message"></textarea>
+						<div class="but">
+							<div class="submit" @click="trans">发送</div>
+						</div>
+					</div>
 				</div>
-				<div class="right">
-					<div class="inputItem">
-						<img src="../assets/username.png">
-						<input type="text" placeholder="昵称" v-model="username">
-					</div>
-					<div class="inputItem">
-						<img src="../assets/emali.png">
-						<input type="text" placeholder="邮箱" v-model="email">
-					</div>
-					<textarea class="mess" placeholder="写下您的留言（200字以内）..." v-model="message"></textarea>
-					<div class="but">
-						<div class="submit" @click="trans">发送</div>
-					</div>
+				<div class="setting">© 2015 - 2018 All Rights Reserved Acirno | Theme by  Tinection. 
 				</div>
-			</div>
-			<div class="setting">© 2015 - 2018 All Rights Reserved Acirno | Theme by  Tinection. 
 			</div>
 		</div>
 	</div>
@@ -366,99 +370,127 @@
 }
 .bottomBox{
 	.message{
-		padding: .3rem .3rem .3rem .8rem;
-		background-color: rgba(20, 30, 48, 0.96);
-		display:flex;
-		.left{
-			width: 50%;
-			.title{
-				margin-bottom: .1rem;
-				font-size: 24px;
-				color: #fff;
-			}
-			.jian{
-				width: 60%;
-				margin-bottom: .4rem;
-				font-size: 15px;
-				line-height: .24rem;
-				color: #fff;
-			}
-			.stat{
-				margin-bottom: .1rem;
-				font-size: 14px;
-				color: #fff;
-				span{
-					color: #38A1F3;
-				}
-			}
+		height: 4rem;
+		position: relative;
+		.background{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
 		}
-		.right{
-			width: 50%;
+		.models{
+			background: rgba(0,0,0,.76);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
+		.content{
 			display:flex;
-			flex-direction: column;
-			align-items: center;
-			.inputItem{
-				margin-bottom: .14rem;
-				border-radius: .03rem;
-				display:flex;
-				align-items: center;
-				background: #fff;
-				width: 3.6rem;
-				height: .36rem;
-				img{
-					margin-left: .04rem;
-					margin-right: .06rem;
-					width: .22rem;
-					height: .22rem;
-				}
-				input{
-					outline: none;
-					border: none;
-					font-size: 14px;
-					width: 3rem;
-					height: .22rem; 
-				}
-			}
-			.mess{
-				margin-bottom: .1rem;
-				padding: .05rem;
-				outline: none;
-				border: none;
-				resize:none;
-				border-radius: .03rem;
-				font-size: 14px;
-				background: #fff;
-				width: 3.5rem;
-				height: 1rem;
-			}
-			.but{
-				width: 3.6rem;
-				display:flex;
-				justify-content:flex-end;
-				.submit{
-					border-radius:.05rem; 
-					background: #38A1F3;
-					width: 1rem;
-					text-align: center;
-					height: .32rem;
-					line-height: .32rem;
-					font-size: 16px;
+			z-index: 2;
+			position: absolute;
+			top: .3rem;
+			left: 1.5rem;
+			// transform: translate(0,-50%);
+			.left{
+				width: 50%;
+				.title{
+					margin-bottom: .1rem;
+					font-size: 24px;
 					color: #fff;
 				}
-				.submit:hover{
-					background: rgb(44,129,208);
-				};
-			}	
+				.jian{
+					width: 60%;
+					margin-bottom: .4rem;
+					font-size: 15px;
+					line-height: .24rem;
+					color: #fff;
+				}
+				.stat{
+					margin-bottom: .1rem;
+					font-size: 14px;
+					color: #fff;
+					span{
+						color: #38A1F3;
+					}
+				}
+			}
+			.right{
+				width: 50%;
+				display:flex;
+				flex-direction: column;
+				align-items: center;
+				.inputItem{
+					margin-bottom: .14rem;
+					border-radius: .03rem;
+					display:flex;
+					align-items: center;
+					background: #fff;
+					width: 3.6rem;
+					height: .36rem;
+					img{
+						margin-left: .04rem;
+						margin-right: .06rem;
+						width: .22rem;
+						height: .22rem;
+					}
+					input{
+						outline: none;
+						border: none;
+						font-size: 14px;
+						width: 3rem;
+						height: .22rem; 
+					}
+				}
+				.mess{
+					margin-bottom: .1rem;
+					padding: .05rem;
+					outline: none;
+					border: none;
+					resize:none;
+					border-radius: .03rem;
+					font-size: 14px;
+					background: #fff;
+					width: 3.5rem;
+					height: 1rem;
+				}
+				.but{
+					width: 3.6rem;
+					display:flex;
+					justify-content:flex-end;
+					.submit{
+						border-radius:.05rem; 
+						background: #38A1F3;
+						width: 1rem;
+						text-align: center;
+						height: .32rem;
+						line-height: .32rem;
+						font-size: 14px;
+						color: #fff;
+					}
+					.submit:hover{
+						background: rgb(44,129,208);
+					};
+				}	
+			}
 		}
-	}
-	.setting{
-		background: #141E30;
-		width: 100%;
-		text-align: center;
-		height: .4rem;
-		line-height:.4rem;
-		font-size: 14px;
-		color: #fff;
+		.setting{
+			// background: #141E30;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			height: .4rem;
+			line-height:.4rem;
+			font-size: 14px;
+			color: #fff;
+			z-index: 1;
+		}
 	}
 }
 </style>

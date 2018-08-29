@@ -54,7 +54,7 @@
 				<div class="applist" v-if="replyList.length > 0">
 					<div class="appItem" v-for="(item,index) in replyList">
 						<div class="user">
-							<img src="../assets/0-1.jpg">
+							<img src="../assets/net.png">
 							<div class="biao">
 								<div class="username">{{item.username}}</div>
 								<div class="miao"># {{index + 1}}楼 {{item.createdTime | updateTime}}</div>
@@ -209,7 +209,7 @@
 			height: .3rem;
 		}
 		.shus{
-			font-size: 16px;
+			font-size: 18px;
 			color: red;
 			font-weight: bold;
 		}
@@ -270,11 +270,11 @@
 			.submit{
 				border-radius:.05rem; 
 				background: #38A1F3;
-				width: 1rem;
+				width: .9rem;
 				text-align: center;
-				height: .36rem;
-				line-height: .36rem;
-				font-size: 16px;
+				height: .3rem;
+				line-height: .3rem;
+				font-size: 14px;
 				color: #fff;
 			}
 			.submit:hover{
@@ -296,8 +296,8 @@
 					img{
 						margin-right: .1rem;
 						border-radius: 50%;
-						width: .5rem;
-						height: .5rem;
+						width: .36rem;
+						height: .36rem;
 					}
 					.biao{
 						display:flex;
@@ -435,8 +435,8 @@
 			background: #38A1F3;
 			width: 1.8rem;
 			text-align:center;
-			height: .5rem;
-			line-height: .5rem;
+			height: .46rem;
+			line-height: .46rem;
 			color: #fff;
 			font-size: 16px;
 		}
@@ -578,16 +578,15 @@
 			},
 			//发表一级评论
 			subReply(){
-				let userObj = localStorage.getItem('userObj');
+				let userObj = JSON.parse(localStorage.getItem('userObj'));
 				if(!this.message){
 					this.$message({
 						message: "请输入要评论的内容哦～",
 						type: 'warning'
 					});
-				}else if(!userObj && userObj.nickname != "" && userObj.email != ""){
+				}else if(!userObj || !userObj.nickname || !userObj.email){
 					this.isLogin = true;
 				}else{
-					let userObj = JSON.parse(localStorage.getItem('userObj'));
 					let obj = {
 						wid: parseInt(this.id),					//文章id
 						gid: parseInt(this.type),				//文章类型id
