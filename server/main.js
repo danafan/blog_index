@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser');
 const app = express();
 
 // 监听8090端口
-var server = app.listen(8090,function () {
+var server = app.listen(8080,function () {
   console.log("服务器已连接，访问地址为：localhost:8090");
 });   
 

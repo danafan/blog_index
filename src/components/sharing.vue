@@ -135,7 +135,10 @@
 					text-overflow: ellipsis;
 					display: -webkit-box;
 					-webkit-line-clamp: 1;
+					/*! autoprefixer: off */
 					-webkit-box-orient: vertical;
+					/* autoprefixer: on */
+
 				}
 				.subname{
 					font-size: 13px;
@@ -144,7 +147,10 @@
 					text-overflow: ellipsis;
 					display: -webkit-box;
 					-webkit-line-clamp: 2;
+					/*! autoprefixer: off */
 					-webkit-box-orient: vertical;
+					/* autoprefixer: on */
+
 					
 				}
 				.jia{
@@ -245,7 +251,10 @@
 						text-overflow: ellipsis;
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
+						/*! autoprefixer: off */
 						-webkit-box-orient: vertical;
+						/* autoprefixer: on */
+
 					}
 					.kan{
 						font-size: 12px;

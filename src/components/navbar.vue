@@ -395,7 +395,6 @@
 			position: absolute;
 			top: .3rem;
 			left: 1.5rem;
-			// transform: translate(0,-50%);
 			.left{
 				width: 50%;
 				.title{
@@ -479,7 +478,6 @@
 			}
 		}
 		.setting{
-			// background: #141E30;
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -499,7 +497,7 @@
 	export default{
 		data(){
 			return{
-				selIndex: 'index',			//默认是首页
+				selIndex: '',				//默认是首页
 				username: "",				//用户名
 				email: "",					//邮箱
 				message: "",				//留言
@@ -578,14 +576,14 @@
 					}).then(() => {
 						resource.addMessage(obj).then(res => {
 							if(res.data.code == "0"){
-								this.username = "";				//用户名
-								this.email = "";				//邮箱
-								this.message = "";				//留言
 								let userObj = {
 									nickname: this.username,
 									email:this.email
 								}
 								localStorage.setItem('userObj',JSON.stringify(userObj))
+								this.username = "";				//用户名
+								this.email = "";				//邮箱
+								this.message = "";				//留言
 								this.$message({
 									message: res.data.msg,
 									type: 'success'

@@ -44,7 +44,7 @@ dev: {
     proxyTable: {
         //开发环境
         '/home': {
-            target: 'http://localhost:8090',
+            target: 'http://localhost:8080',
             changeOrigin: true,
             pathRewrite: {
               '^/home': '/home'

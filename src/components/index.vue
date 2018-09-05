@@ -305,7 +305,10 @@
 						text-overflow: ellipsis;
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
+						/*! autoprefixer: off */
 						-webkit-box-orient: vertical;
+						/* autoprefixer: on */
+
 					}
 					.subname{
 						margin-top: .06rem;
@@ -316,7 +319,10 @@
 						text-overflow: ellipsis;
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
+						/*! autoprefixer: off */
 						-webkit-box-orient: vertical;
+						/* autoprefixer: on */
+
 					}
 					.info{
 						width: 100%;

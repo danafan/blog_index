@@ -152,7 +152,10 @@
 						text-overflow: ellipsis;
 						display: -webkit-box;
 						-webkit-line-clamp: 1;
+						/*! autoprefixer: off */
 						-webkit-box-orient: vertical;
+						/* autoprefixer: on */
+
 					}
 					.Author{
 						margin-top: .06rem;
@@ -165,7 +168,9 @@
 						text-overflow: ellipsis;
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
+						/*! autoprefixer: off */
 						-webkit-box-orient: vertical;
+						/* autoprefixer: on */
 					}
 				}
 			}

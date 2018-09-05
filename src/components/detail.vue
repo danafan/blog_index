@@ -105,7 +105,7 @@
 <style lang="less" scoped>
 .box{
 	border: 1px solid #f4f4f4;
-	margin: .8rem auto .4rem;
+	margin: .4rem auto .4rem;
 	width: 70%;
 	// 上面的文字
 	.content{
