@@ -44,7 +44,8 @@ dev: {
     proxyTable: {
         //开发环境
         '/home': {
-            target: 'http://localhost:8080',
+            // target: 'http://localhost:8080',
+            target: 'http://lf.92nu.com',
             changeOrigin: true,
             pathRewrite: {
               '^/home': '/home'
