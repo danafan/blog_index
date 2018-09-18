@@ -117,7 +117,7 @@
 				margin-bottom: .3rem;
 				width: 65%;
 				font-weight: bold;
-				font-size: 16px;
+				font-size: 22px;
 			}
 			.jia{
 				display:flex;

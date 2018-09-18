@@ -12,12 +12,12 @@ var sqlMap = {
     },
     // 读书笔记
     notes: {
-        noteList: 'select * from notes order by id desc limit ?,6',                                            //读书笔记列表
+        noteList: 'select * from notes order by id desc limit ?,6',                                           
         noteDetail: 'select * from notes where id = ?',                             //读书笔记详情
     },
     // 我的日志
     logs: {
-        logList: 'select * from logs order by id desc limit ?,5',                                              //我的日志列表
+        logList: 'select * from logs order by id desc limit ?,5',                                             
         logDetail: 'select * from logs where id = ?',                               //我的日志详情
     },
     // 最近在读

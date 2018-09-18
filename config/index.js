@@ -37,15 +37,15 @@ module.exports = {
 },
 dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8090,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
         //开发环境
         '/home': {
-            // target: 'http://localhost:8080',
-            target: 'http://lf.92nu.com',
+            target: 'http://localhost:8090',
+            // target: 'http://lf.92nu.com',
             changeOrigin: true,
             pathRewrite: {
               '^/home': '/home'
