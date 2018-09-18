@@ -49,8 +49,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="setting">© 2015 - 2018 All Rights Reserved Acirno | Theme by  Tinection. 
-				</div>
+				<div class="setting">Copyright © 2018 ranbol.com All Rights Reserved | 浙ICP备18040628号</div>
 			</div>
 		</div>
 	</div>
