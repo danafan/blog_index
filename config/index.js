@@ -45,7 +45,7 @@ dev: {
         //开发环境
         '/home': {
             target: 'http://localhost:8090',
-            // target: 'http://lf.92nu.com',
+            // target: 'http://ranbol.com',
             changeOrigin: true,
             pathRewrite: {
               '^/home': '/home'
