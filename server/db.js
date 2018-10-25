@@ -4,7 +4,7 @@ module.exports = {
 		port: 3306,
 		user: 'ranbol',
 		password: '?.',
-		database: 'blog',
+		database: 'ranbol',
 		multipleStatements: true
 	},
 	// mysql:{

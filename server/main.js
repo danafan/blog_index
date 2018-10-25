@@ -5,6 +5,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
+var history = require('connect-history-api-fallback');
 
 const app = express();
 
@@ -12,7 +13,9 @@ const app = express();
 var server = app.listen(8090,function () {
   console.log("服务器已连接，访问地址为：localhost:8090");
 });   
-
+app.use(history({
+	htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
+}));
 app.use(cookieParser('secret'));
 // 使用session中间件
 app.use(session({

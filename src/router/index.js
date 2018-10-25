@@ -12,6 +12,7 @@ const small = resolve=>System.import('@/components/small')
 Vue.use(Router)
 
 export default new Router({
+  mode:"history",
   routes: [
   {
     path: '/',

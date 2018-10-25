@@ -15,10 +15,10 @@ app.get('/addBrowse',(req, res) => {
     //根据sql语句对数据库进行查询
     conn.query(sql,function(err,result) {   
         if (result) {
-         var response = JSON.stringify({code:0,msg:"修改成功"});
-         res.send(response);
-     }
-     if (err) {       
+           var response = JSON.stringify({code:0,msg:"修改成功"});
+           res.send(response);
+       }
+       if (err) {       
         var response = JSON.stringify({code:1,msg:"修改失败"});
         res.send(response);
     }  
@@ -345,10 +345,10 @@ app.get('/approving',(req, res) => {
     //根据sql语句对数据库进行查询
     conn.query(sql,function(err,result) {   
         if (result) {
-         var response = JSON.stringify({code:0,msg:"修改成功"});
-         res.send(response);
-     }
-     if (err) {       
+           var response = JSON.stringify({code:0,msg:"修改成功"});
+           res.send(response);
+       }
+       if (err) {       
         var response = JSON.stringify({code:1,msg:"修改失败"});
         res.send(response);
     }  
